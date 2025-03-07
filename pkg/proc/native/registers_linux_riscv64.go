@@ -8,9 +8,9 @@ import (
 
 	sys "golang.org/x/sys/unix"
 
-	"github.com/go-delve/delve/pkg/dwarf/op"
-	"github.com/go-delve/delve/pkg/proc"
-	"github.com/go-delve/delve/pkg/proc/linutil"
+	"github.com/fansqz/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/proc"
+	"github.com/fansqz/delve/pkg/proc/linutil"
 )
 
 // Defined in asm/ptrace.h

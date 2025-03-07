@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-delve/delve/pkg/dwarf/op"
-	"github.com/go-delve/delve/pkg/elfwriter"
-	"github.com/go-delve/delve/pkg/proc"
-	"github.com/go-delve/delve/pkg/proc/internal/ebpf"
+	"github.com/fansqz/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/elfwriter"
+	"github.com/fansqz/delve/pkg/proc"
+	"github.com/fansqz/delve/pkg/proc/internal/ebpf"
 )
 
 // ErrNoThreads core file did not contain any threads.

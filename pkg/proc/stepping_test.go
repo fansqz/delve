@@ -9,10 +9,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/go-delve/delve/pkg/goversion"
-	"github.com/go-delve/delve/pkg/proc"
-	protest "github.com/go-delve/delve/pkg/proc/test"
-	"github.com/go-delve/delve/service/api"
+	"github.com/fansqz/delve/pkg/goversion"
+	"github.com/fansqz/delve/pkg/proc"
+	protest "github.com/fansqz/delve/pkg/proc/test"
+	"github.com/fansqz/delve/service/api"
 )
 
 type nextTest struct {

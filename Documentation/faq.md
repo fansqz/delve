@@ -21,9 +21,9 @@ Currently Delve supports (GOOS / GOARCH):
 
 There is no planned ETA for support of other architectures or operating systems. Bugs tracking requested support are:
 
-- [32bit ARM support](https://github.com/go-delve/delve/issues/328)
-- [PowerPC support](https://github.com/go-delve/delve/issues/1564)
-- [OpenBSD](https://github.com/go-delve/delve/issues/1477)
+- [32bit ARM support](https://github.com/fansqz/delve/issues/328)
+- [PowerPC support](https://github.com/fansqz/delve/issues/1564)
+- [OpenBSD](https://github.com/fansqz/delve/issues/1477)
 
 See also: [backend test health](backend_test_health.md).
 
@@ -118,7 +118,7 @@ The `sources` command could also be useful in troubleshooting this problem, it s
 
 For more information on path substitution see [path substitution](cli/substitutepath.md).
 
-If you still think this is a bug in Delve and not a configuration problem, open an [issue](https://github.com/go-delve/delve/issues), filling the issue template and including the logs produced by delve with the options `--log --log-output=rpc,dap`.
+If you still think this is a bug in Delve and not a configuration problem, open an [issue](https://github.com/fansqz/delve/issues), filling the issue template and including the logs produced by delve with the options `--log --log-output=rpc,dap`.
 
 ### <a name="runtime"></a> Using Delve to debug the Go runtime
 

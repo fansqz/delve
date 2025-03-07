@@ -5,10 +5,10 @@ package native
 import (
 	"errors"
 
-	"github.com/go-delve/delve/pkg/dwarf/op"
-	"github.com/go-delve/delve/pkg/proc"
-	"github.com/go-delve/delve/pkg/proc/amd64util"
-	"github.com/go-delve/delve/pkg/proc/internal/ebpf"
+	"github.com/fansqz/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/proc"
+	"github.com/fansqz/delve/pkg/proc/amd64util"
+	"github.com/fansqz/delve/pkg/proc/internal/ebpf"
 )
 
 var ErrNativeBackendDisabled = errors.New("native backend disabled during compilation")

@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/go-delve/delve/pkg/proc/test"
-	"github.com/go-delve/delve/pkg/terminal/colorize"
+	"github.com/fansqz/delve/pkg/proc/test"
+	"github.com/fansqz/delve/pkg/terminal/colorize"
 )
 
 const terminalHighlightEscapeCode string = "\033[%2dm"

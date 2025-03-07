@@ -3,9 +3,9 @@ package linutil
 import (
 	"fmt"
 
-	"github.com/go-delve/delve/pkg/dwarf/op"
-	"github.com/go-delve/delve/pkg/dwarf/regnum"
-	"github.com/go-delve/delve/pkg/proc"
+	"github.com/fansqz/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/dwarf/regnum"
+	"github.com/fansqz/delve/pkg/proc"
 )
 
 // LOONG64Registers is a wrapper for sys.PtraceRegs.

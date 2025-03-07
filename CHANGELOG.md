@@ -60,7 +60,7 @@ This project adheres to Semantic Versioning.
 
 ## [1.23.1] 2024-09-23
 
-Telemetry notice: starting with version 1.24.0 Delve will begin collecting opt-in telemetry data using the same mechanism used by the toolchain, see <https://github.com/golang/go/issues/68384>, <https://go.dev/doc/telemetry#background>, <https://github.com/go-delve/delve/issues/3815>.
+Telemetry notice: starting with version 1.24.0 Delve will begin collecting opt-in telemetry data using the same mechanism used by the toolchain, see <https://github.com/golang/go/issues/68384>, <https://go.dev/doc/telemetry#background>, <https://github.com/fansqz/delve/issues/3815>.
 
 ### Fixed
 
@@ -848,7 +848,7 @@ Deprecation notice: starting with the next version of Delve version 1 of the API
 ### Changed
 
 - Changes to where the configuration is stored, conforming to [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) with fallbacks to the current directory when calls to `user.Current` fail (#1455 @GregorioMartinez, @acshekhara1)
-- Project moved from github.com/derekparker/delve to github.com/go-delve/delve (@derekparker)
+- Project moved from github.com/derekparker/delve to github.com/fansqz/delve (@derekparker)
 - Switched dependency management to go.mod (@aarzilli, @derekparker, @zavla)
 - New build scripts and support building on macOS without the native backend (@aarzilli, @kevin-cantwell)
 - Tolerate corrupted memory when reading the goroutine list (#1354, @aarzilli)

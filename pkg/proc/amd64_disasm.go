@@ -5,8 +5,8 @@
 package proc
 
 import (
-	"github.com/go-delve/delve/pkg/dwarf/op"
-	"github.com/go-delve/delve/pkg/dwarf/regnum"
+	"github.com/fansqz/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/dwarf/regnum"
 
 	"golang.org/x/arch/x86/x86asm"
 )

@@ -11,8 +11,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/go-delve/delve/pkg/dwarf/godwarf"
-	"github.com/go-delve/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/dwarf/godwarf"
+	"github.com/fansqz/delve/pkg/dwarf/op"
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/link"

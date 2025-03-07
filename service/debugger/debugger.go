@@ -20,16 +20,16 @@ import (
 	"sync"
 	"time"
 
-	"github.com/go-delve/delve/pkg/dwarf/op"
-	"github.com/go-delve/delve/pkg/gobuild"
-	"github.com/go-delve/delve/pkg/goversion"
-	"github.com/go-delve/delve/pkg/locspec"
-	"github.com/go-delve/delve/pkg/logflags"
-	"github.com/go-delve/delve/pkg/proc"
-	"github.com/go-delve/delve/pkg/proc/core"
-	"github.com/go-delve/delve/pkg/proc/gdbserial"
-	"github.com/go-delve/delve/pkg/proc/native"
-	"github.com/go-delve/delve/service/api"
+	"github.com/fansqz/delve/pkg/dwarf/op"
+	"github.com/fansqz/delve/pkg/gobuild"
+	"github.com/fansqz/delve/pkg/goversion"
+	"github.com/fansqz/delve/pkg/locspec"
+	"github.com/fansqz/delve/pkg/logflags"
+	"github.com/fansqz/delve/pkg/proc"
+	"github.com/fansqz/delve/pkg/proc/core"
+	"github.com/fansqz/delve/pkg/proc/gdbserial"
+	"github.com/fansqz/delve/pkg/proc/native"
+	"github.com/fansqz/delve/service/api"
 )
 
 var (

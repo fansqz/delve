@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/go-delve/delve/pkg/logflags"
+	"github.com/fansqz/delve/pkg/logflags"
 )
 
 var (

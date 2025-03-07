@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/go-delve/delve/pkg/dwarf"
-	"github.com/go-delve/delve/pkg/dwarf/leb128"
+	"github.com/fansqz/delve/pkg/dwarf"
+	"github.com/fansqz/delve/pkg/dwarf/leb128"
 )
 
 type parsefunc func(*parseContext) parsefunc

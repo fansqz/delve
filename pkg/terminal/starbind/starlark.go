@@ -15,9 +15,9 @@ import (
 	"go.starlark.net/starlark"
 	"go.starlark.net/syntax"
 
-	"github.com/go-delve/delve/pkg/logflags"
-	"github.com/go-delve/delve/service"
-	"github.com/go-delve/delve/service/api"
+	"github.com/fansqz/delve/pkg/logflags"
+	"github.com/fansqz/delve/service"
+	"github.com/fansqz/delve/service/api"
 )
 
 //go:generate go run ../../../_scripts/gen-starlark-bindings.go go ./starlark_mapping.go

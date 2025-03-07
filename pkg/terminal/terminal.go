@@ -16,12 +16,12 @@ import (
 	"github.com/derekparker/trie"
 	"github.com/go-delve/liner"
 
-	"github.com/go-delve/delve/pkg/config"
-	"github.com/go-delve/delve/pkg/locspec"
-	"github.com/go-delve/delve/pkg/terminal/colorize"
-	"github.com/go-delve/delve/pkg/terminal/starbind"
-	"github.com/go-delve/delve/service"
-	"github.com/go-delve/delve/service/api"
+	"github.com/fansqz/delve/pkg/config"
+	"github.com/fansqz/delve/pkg/locspec"
+	"github.com/fansqz/delve/pkg/terminal/colorize"
+	"github.com/fansqz/delve/pkg/terminal/starbind"
+	"github.com/fansqz/delve/service"
+	"github.com/fansqz/delve/service/api"
 )
 
 const (
