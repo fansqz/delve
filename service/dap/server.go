@@ -273,7 +273,7 @@ type dapClientCapabilities struct {
 // paging and context-specific string limits.
 var DefaultLoadConfig = proc.LoadConfig{
 	FollowPointers:     true,
-	MaxVariableRecurse: -1, // 配置MaxVariableRecurse为-1，获取指针地址
+	MaxVariableRecurse: 1, // 配置MaxVariableRecurse为-1，获取指针地址
 	// TODO(polina): consider 1024 limit instead:
 	// - vscode+C appears to use 1024 as the load limit
 	// - vscode viewlet hover truncates at 1023 characters
@@ -2676,7 +2676,7 @@ func (s *Session) convertVariableWithOpts(v *proc.Variable, qualifiedNameOrExpr 
 		}
 		return s.variableHandles.create(&fullyQualifiedVariable{v, qualifiedNameOrExpr, false /*not a scope*/, 0})
 	}
-	value = api.ConvertVar(v).SinglelineStringWithShortTypes()
+	value = getValueFromVariable(v)
 	if v.Unreadable != nil {
 		return value, 0
 	}
@@ -2690,7 +2690,7 @@ func (s *Session) convertVariableWithOpts(v *proc.Variable, qualifiedNameOrExpr 
 		// TODO(polina): Get *proc.Variable object from debugger instead. Export a function to set v.loaded to false
 		// and call v.loadValue gain with a different load config. It's more efficient, and it's guaranteed to keep
 		// working with generics.
-		value = api.ConvertVar(v).SinglelineStringWithShortTypes()
+		value = getValueFromVariable(v)
 		typeName := api.PrettyTypeName(v.DwarfType)
 		loadExpr := fmt.Sprintf("*(*%q)(%#x)", typeName, v.Addr)
 		s.config.log.Debugf("loading %s (type %s) with %s", qualifiedNameOrExpr, typeName, loadExpr)
@@ -2704,7 +2704,7 @@ func (s *Session) convertVariableWithOpts(v *proc.Variable, qualifiedNameOrExpr 
 		} else {
 			v.Children = vLoaded.Children
 			v.Value = vLoaded.Value
-			value = api.ConvertVar(v).SinglelineStringWithShortTypes()
+			value = getValueFromVariable(v)
 		}
 		return value
 	}
@@ -2817,6 +2817,20 @@ func (s *Session) convertVariableWithOpts(v *proc.Variable, qualifiedNameOrExpr 
 		value = value[:maxVarValueLen] + "..."
 	}
 	return value, variablesReference
+}
+
+func getValueFromVariable(v *proc.Variable) string {
+	// 使用delve中dap的获取值的方法
+	value := api.ConvertVar(v).SinglelineString()
+	// 如果是指针，则改为指针，那么取该指针指向的地址作为value
+	if v.Kind == reflect.Ptr {
+		if len(v.Children) == 0 {
+			value = "0x0"
+		} else {
+			value = "0x" + strconv.FormatUint(v.Children[0].Addr, 16)
+		}
+	}
+	return value
 }
 
 // onEvaluateRequest handles 'evaluate' requests.
