@@ -273,7 +273,7 @@ type dapClientCapabilities struct {
 // paging and context-specific string limits.
 var DefaultLoadConfig = proc.LoadConfig{
 	FollowPointers:     true,
-	MaxVariableRecurse: 1,
+	MaxVariableRecurse: -1,
 	// TODO(polina): consider 1024 limit instead:
 	// - vscode+C appears to use 1024 as the load limit
 	// - vscode viewlet hover truncates at 1023 characters
