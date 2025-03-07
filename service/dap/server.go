@@ -273,7 +273,7 @@ type dapClientCapabilities struct {
 // paging and context-specific string limits.
 var DefaultLoadConfig = proc.LoadConfig{
 	FollowPointers:     true,
-	MaxVariableRecurse: -1, // 配置MaxVariableRecurse为-1，获取指针地址
+	MaxVariableRecurse: 1, // 配置MaxVariableRecurse为-1，获取指针地址
 	// TODO(polina): consider 1024 limit instead:
 	// - vscode+C appears to use 1024 as the load limit
 	// - vscode viewlet hover truncates at 1023 characters
@@ -2717,31 +2717,31 @@ func (s *Session) convertVariableWithOpts(v *proc.Variable, qualifiedNameOrExpr 
 		// Skip child reference
 	case reflect.Ptr:
 		if v.DwarfType != nil && len(v.Children) > 0 && v.Children[0].Addr != 0 && v.Children[0].Kind != reflect.Invalid {
-			if v.Children[0].OnlyAddr { // Not loaded
-				if v.Addr == 0 {
-					// This is equivalent to the following with the cli:
-					//    (dlv) p &a7
-					//    (**main.FooBar)(0xc0000a3918)
-					//
-					// TODO(polina): what is more appropriate?
-					// Option 1: leave it unloaded because it is a special case
-					// Option 2: load it, but then we have to load the child, not the parent, unlike all others
-					// TODO(polina): see if reloadVariable can be reused here
-					cTypeName := api.PrettyTypeName(v.Children[0].DwarfType)
-					cLoadExpr := fmt.Sprintf("*(*%q)(%#x)", cTypeName, v.Children[0].Addr)
-					s.config.log.Debugf("loading *(%s) (type %s) with %s", qualifiedNameOrExpr, cTypeName, cLoadExpr)
-					cLoaded, err := s.debugger.EvalVariableInScope(-1, 0, 0, cLoadExpr, DefaultLoadConfig)
-					if err != nil {
-						value += fmt.Sprintf(" - FAILED TO LOAD: %s", err)
-					} else {
-						cLoaded.Name = v.Children[0].Name // otherwise, this will be the pointer expression
-						v.Children = []proc.Variable{*cLoaded}
-						value = api.ConvertVar(v).SinglelineStringWithShortTypes()
-					}
-				} else {
-					value = reloadVariable(v, qualifiedNameOrExpr)
-				}
-			}
+			//if v.Children[0].OnlyAddr { // Not loaded
+			//	if v.Addr == 0 {
+			//		// This is equivalent to the following with the cli:
+			//		//    (dlv) p &a7
+			//		//    (**main.FooBar)(0xc0000a3918)
+			//		//
+			//		// TODO(polina): what is more appropriate?
+			//		// Option 1: leave it unloaded because it is a special case
+			//		// Option 2: load it, but then we have to load the child, not the parent, unlike all others
+			//		// TODO(polina): see if reloadVariable can be reused here
+			//		cTypeName := api.PrettyTypeName(v.Children[0].DwarfType)
+			//		cLoadExpr := fmt.Sprintf("*(*%q)(%#x)", cTypeName, v.Children[0].Addr)
+			//		s.config.log.Debugf("loading *(%s) (type %s) with %s", qualifiedNameOrExpr, cTypeName, cLoadExpr)
+			//		cLoaded, err := s.debugger.EvalVariableInScope(-1, 0, 0, cLoadExpr, DefaultLoadConfig)
+			//		if err != nil {
+			//			value += fmt.Sprintf(" - FAILED TO LOAD: %s", err)
+			//		} else {
+			//			cLoaded.Name = v.Children[0].Name // otherwise, this will be the pointer expression
+			//			v.Children = []proc.Variable{*cLoaded}
+			//			value = api.ConvertVar(v).SinglelineStringWithShortTypes()
+			//		}
+			//	} else {
+			value = reloadVariable(v, qualifiedNameOrExpr)
+			//	//}
+			//}
 			if !v.Children[0].OnlyAddr {
 				variablesReference = maybeCreateVariableHandle(v)
 			}
